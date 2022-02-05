@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 
+import Navbar from '../../componentes/navbar';
+
 function Usuario_novo(){
 
     const [email, setEmail] = useState();
@@ -52,6 +54,9 @@ function Usuario_novo(){
     }
 
     return(
+        <>
+        <Navbar/>
+        
         <div className="form-cadastro">
 
             <form className='text-center form-login mx-auto mt-5'>
@@ -77,6 +82,7 @@ function Usuario_novo(){
 
             </form>
         </div>
+        </>
     )
 }
 export default Usuario_novo;

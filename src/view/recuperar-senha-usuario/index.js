@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
  import firebase from '../../config/firebase';
  import 'firebase/auth';
 
+ import Navbar from '../../componentes/navbar';
+
 function UsuarioRecupera(){
 
         const [email, setEmail] = useState();
@@ -20,7 +22,10 @@ function UsuarioRecupera(){
     }
 
     return(
-        
+        <>
+
+            <Navbar/>
+
             <form className='text-center form-login mx-auto mt-5'>
                 <h3 className='mb-3 fw-bold'>Recupera Senha</h3>
                  <input onChange={(e)=> setEmail(e.target.value)} type='email' className='form-control my-2' placeholder='Informe o E-mail que deseja recuperar a senha'></input>   
@@ -33,7 +38,7 @@ function UsuarioRecupera(){
                  <Link to = "/"  > <i className="fas fa-undo mt-5 fa-3x"></i> </Link>
                  </div>
             </form>
-            
+            </>    
     )
 }
 

@@ -1,27 +1,40 @@
 import React, {useState} from 'react';
 import './login.css';
-import { Link } from 'react-router-dom';
+import {Link, Navigate  } from 'react-router-dom';
 
 import firebase from '../../config/firebase';
 import 'firebase/auth';
+
+import { useSelector, useDispatch} from 'react-redux';
 
 function Login (){
   const [email, setEmail] = useState();
   const [senha, setSenha] = useState();
   const [msgTipo, setMsgTipo] = useState();
 
+  const dispatch = useDispatch();
+
   function logar(){
        //salvar email e senha no Firebase
        
     firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado =>{
       setMsgTipo('sucesso')
+      setTimeout(() => {
+        dispatch({type: 'LOG_IN', usuarioEmail: email});
+      }, 2000);
+
+     
     }).catch(erro =>{
       setMsgTipo('erro')
     });
   }
 
+
     return(
       <div className = "login-content d-flex align-items-center">
+
+        {useSelector(state => state.usuarioLogado) > 0 ? <Navigate  to='/'/> :null}
+
           <form className = "form-signin mx-auto">
               <h1 className="h3 mb-3  fw-bold text-center">Tela de Login</h1>
 
@@ -37,9 +50,9 @@ function Login (){
               </div>
 
                 <div className="opcoe-login mt-3">
-                  <Link to='usuarioNovo' className="mx-2 fw-bold"> Cadastrar-se</Link>
+                  <Link to='/usuarioNovo' className="mx-2 fw-bold"> Cadastrar-se</Link>
                   <span>&#8739;</span>
-                  <Link to = "recuperaSenha" className="mx-2 fw-bold"> Recupera Senha</Link>   
+                  <Link to = "/recuperaSenha" className="mx-2 fw-bold"> Recupera Senha</Link>   
                 </div>
         </form>
      </div>
