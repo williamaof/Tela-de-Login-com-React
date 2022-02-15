@@ -36,7 +36,7 @@ function Login (){
         {useSelector(state => state.usuarioLogado) > 0 ? <Navigate  to='/'/> :null}
 
           <form className = "form-signin mx-auto">
-              <h1 className="h3 mb-3  fw-bold text-center">Tela de Login</h1>
+              <h1 className="h3 mb-3  font-weight-bold text-center">Tela de Login</h1>
 
               
                 <input onChange={(e) => setEmail (e.target.value)} type="email" class="form-control my-2"  id="floatingInput" placeholder="name@example.com"/>
@@ -45,14 +45,14 @@ function Login (){
               <button onClick={logar} className="w-100 btn btn-lg " type="button">Entrar</button>
 
               <div className='MSN-login mt-3 text-center '>
-                {msgTipo === 'sucesso' && <span className='text-success fw-bold' >&#10004; Logado com sucesso </span>}
-                {msgTipo === 'erro' && <span className='text-danger fw-bold'>&#10006; Usuário ou Senha inválidos </span>}
+                {msgTipo === 'sucesso' && <span className='text-success font-weight-bold' >&#10004; Logado com sucesso </span>}
+                {msgTipo === 'erro' && <span className='text-danger font-weight-bold'>&#10006; Usuário ou Senha inválidos </span>}
               </div>
 
                 <div className="opcoe-login mt-3">
-                  <Link to='/usuarioNovo' className="mx-2 fw-bold"> Cadastrar-se</Link>
+                  <Link to='/usuarioNovo' className="mx-2 font-weight-bold"> Cadastrar-se</Link>
                   <span>&#8739;</span>
-                  <Link to = "/recuperaSenha" className="mx-2 fw-bold"> Recupera Senha</Link>   
+                  <Link to = "/recuperaSenha" className="mx-2 font-weight-bold"> Recupera Senha</Link>   
                 </div>
         </form>
      </div>
